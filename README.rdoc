@@ -1,0 +1,4 @@
+== Beermon
+
+Keg monitoring service and Suggestion collector for
+the Shopify Keggerator

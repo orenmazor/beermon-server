@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+lugtread:
+  capacity: 20.0
+  brewery: "Beau's All Natural Brewing Co."
+  name: 'Lug Tread'
+  ibu: 21.0
+  srm: 3.5
+# column: value
+#
+darkhorse:
+  capacity: 50.0
+  brewery: 'Broadhead Brewing Company'
+  name: 'Dark Horse Stout'
+  ibu: 25.5
+  srm: 34.2
+#  column: value
