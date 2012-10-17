@@ -8,9 +8,9 @@ Beermon::Application.routes.draw do
     resource :keg, :only => [:update, :show]
   end
 
-  resources :kegs, :only => [:show] do
+  resources :kegs, :only => [] do
     member do
-      resources :measurements, :only => [:index, :show, :create]
+      resources :measurements, :only => [:index, :create]
     end
   end
 
