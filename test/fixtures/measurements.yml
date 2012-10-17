@@ -5,9 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 carsons_stein:
-  keg: darkhorse
-  amount: 1.0
+  keg: keg_o_darkhorse
+  volume: 1.0
 
 chris_pint_glass:
-  keg: lugtread
-  amount: 0.355
+  keg: keg_o_lugtread
+  volume: 0.355

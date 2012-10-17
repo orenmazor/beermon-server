@@ -11,24 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016121546) do
+ActiveRecord::Schema.define(:version => 20121016233749) do
 
-  create_table "kegs", :force => true do |t|
-    t.string   "kind"
-    t.float    "capacity"
-    t.string   "brewery"
+  create_table "beer_taps", :force => true do |t|
     t.string   "name"
-    t.float    "ibu"
-    t.float    "srm"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "measurements", :force => true do |t|
-    t.integer  "keg_id"
-    t.float    "amount"
+  create_table "beers", :force => true do |t|
+    t.string   "name"
+    t.string   "brewery"
+    t.float    "abv"
+    t.float    "srm"
+    t.float    "ibus"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "kegs", :force => true do |t|
+    t.string   "kind"
+    t.float    "capacity"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "beer_tap_id"
+    t.integer  "beer_id"
+  end
+
+  create_table "measurements", :force => true do |t|
+    t.integer  "keg_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.float    "volume"
+    t.datetime "sampled_at"
+    t.float    "temperature"
   end
 
   create_table "requests", :force => true do |t|

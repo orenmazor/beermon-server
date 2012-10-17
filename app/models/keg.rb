@@ -1,11 +1,15 @@
 class Keg < ActiveRecord::Base
   DEFAULT_RATIO = 0.25
   has_many :measurements
-  attr_accessible :kind, :capacity, :brewery, :name
+  belongs_to :beer
+  belongs_to :beer_tap
+  attr_accessible :kind, :capacity, :beer
   after_update :send_capacity_warning, :if => :below_threshold?
 
+  validates_presence_of :beer
+
   def remaining
-    capacity - measurements.sum(:amount)
+    capacity - measurements.sum(:volume)
   end
 
   def below_threshold?

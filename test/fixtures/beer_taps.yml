@@ -4,17 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-keg_o_lugtread:
-  capacity: 20.0
-  kind: 'sankey'
-  beer: lugtread
+left:
+  name: "Left Tap"
 
-# column: value
-#
-keg_o_darkhorse:
-  capacity: 50.0
-  kind: 'sankey'
-  beer: darkhorse
-  beer_tap: left
-
-#  column: value
+right:
+  name: "Right Tap"

@@ -4,17 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-keg_o_lugtread:
-  capacity: 20.0
-  kind: 'sankey'
-  beer: lugtread
-
+lugtread:
+  brewery: "Beau's All Natural Brewing Co."
+  name: 'Lug Tread'
+  ibus: 21.0
+  srm: 3.5
+  abv: 5.6
 # column: value
 #
-keg_o_darkhorse:
-  capacity: 50.0
-  kind: 'sankey'
-  beer: darkhorse
-  beer_tap: left
-
+darkhorse:
+  brewery: 'Broadhead Brewing Company'
+  name: 'Dark Horse Stout'
+  ibus: 25.5
+  srm: 34.2
+  abv: 6.1
 #  column: value
