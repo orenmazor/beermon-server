@@ -18,6 +18,11 @@ class Keg < ActiveRecord::Base
     remaining < threshold
   end
 
+  def serializable_hash(options = {})
+    options[:include] = [:beer]
+    super
+  end
+
   private
 
   def send_capacity_warning
