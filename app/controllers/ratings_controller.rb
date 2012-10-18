@@ -15,6 +15,6 @@ class RatingsController < ApplicationController
   private
 
   def find_beer
-    @beer = Beef.find(params[:beer_id])
+    @beer = Beer.find(params[:beer_id])
   end
 end
