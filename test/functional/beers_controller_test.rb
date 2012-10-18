@@ -2,6 +2,10 @@ require 'test_helper'
 
 class BeersControllerTest < ActionController::TestCase
 
+  setup do
+    login
+  end
+
   test "it should only respond to JSON requests" do
     get :index
     assert_response :not_acceptable
@@ -12,8 +16,8 @@ class BeersControllerTest < ActionController::TestCase
     assert_response :ok
 
     results = ActiveSupport::JSON.decode(@response.body)
-    expected_keys = %w{id created_at updated_at name brewery abv srm ibus}.sort
-    assert_equal expected_keys, results.first.keys
+    expected_keys = %w{id created_at updated_at name brewery abv srm ibus rating}.sort
+    assert_equal expected_keys, results.first.keys.sort
   end
 
   test "it should be possible to create a new beer" do

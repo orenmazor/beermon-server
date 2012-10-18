@@ -6,14 +6,19 @@ class MeasurementsController < ApplicationController
     respond_with(@keg.measurements)
   end
 
+  def show
+    measurement = @keg.measurements.find(params[:id])
+    respond_with([@keg, measurement])
+  end
+
   def create
     measurement = @keg.measurements.create(params[:measurement])
-    respond_with(measurement)
+    respond_with([@keg, measurement])
   end
 
   private
 
   def find_keg
-    @keg = Keg.find(params[:id])
+    @keg = Keg.find(params[:keg_id])
   end
 end

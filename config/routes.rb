@@ -1,7 +1,7 @@
 Beermon::Application.routes.draw do
 
   resources :beers, :only => [:index, :create, :show, :update, :destroy] do
-    resources :kegs, :only => [:create]
+    resources :kegs, :only => [:create, :show]
     resources :ratings, :only => [:create, :new]
   end
 
@@ -10,7 +10,7 @@ Beermon::Application.routes.draw do
   end
 
   resources :kegs, :only => [] do
-    resources :measurements, :only => [:index, :create]
+    resources :measurements, :only => [:index, :create, :show]
   end
 
 end

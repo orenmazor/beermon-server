@@ -4,6 +4,7 @@ class KegsControllerTest < ActionController::TestCase
   setup do
     @beer_tap = beer_taps(:left)
     @beer = beers(:lugtread)
+    login
   end
 
   test "it should not be possible to create a new keg via HTML" do

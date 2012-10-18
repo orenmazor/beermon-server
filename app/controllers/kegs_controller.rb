@@ -15,7 +15,7 @@ class KegsController < ApplicationController
 
   def create
     keg = request.format.json? ? @beer.kegs.create(params[:keg]) : nil
-    respond_with(keg)
+    respond_with([@beer, keg])
   end
 
   private

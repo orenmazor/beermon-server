@@ -4,10 +4,11 @@ class MeasurementsControllerTest < ActionController::TestCase
 
   setup do
     @keg = kegs(:keg_o_lugtread)
+    login
   end
 
   test "it should be possible to get a list of measurements for a keg" do
-    get :index, :id => @keg, :format => :json
+    get :index, :keg_id => @keg, :format => :json
     assert_response :ok
     measurements = ActiveSupport::JSON.decode(@response.body)
     assert_equal @keg.measurements.count, measurements.size
@@ -16,7 +17,7 @@ class MeasurementsControllerTest < ActionController::TestCase
   test "it should be possible to create a measurement for a keg" do
     request = {:volume => 0.5, :temperature => 9.5, :sampled_at => Time.now}
     assert_difference "Measurement.count" do
-      post :create, :id => @keg, :measurement => request, :format => :json
+      post :create, :keg_id => @keg, :measurement => request, :format => :json
       assert_response :created
     end
   end
@@ -24,7 +25,7 @@ class MeasurementsControllerTest < ActionController::TestCase
   test "it should be possible to create a measurement with only a temperature" do
     request = {:temperature => 8.0, :sampled_at => Time.now}
     assert_difference "Measurement.count" do
-      post :create, :id => @keg, :measurement => request, :format => :json
+      post :create, :keg_id => @keg, :measurement => request, :format => :json
       assert_response :created
     end
   end
@@ -32,7 +33,7 @@ class MeasurementsControllerTest < ActionController::TestCase
   test "it should be possible to create a measurement with only a volume" do
     request = {:volume => 8.0, :sampled_at => Time.now}
     assert_difference "Measurement.count" do
-      post :create, :id => @keg, :measurement => request, :format => :json
+      post :create, :keg_id => @keg, :measurement => request, :format => :json
       assert_response :created
     end
   end

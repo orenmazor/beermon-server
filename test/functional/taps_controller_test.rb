@@ -5,6 +5,7 @@ class TapsControllerTest < ActionController::TestCase
   setup do
     @keg = kegs(:keg_o_lugtread)
     @beer_tap = beer_taps(:right)
+    login
   end
 
   test "it should be possible to request a list of taps" do

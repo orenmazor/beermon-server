@@ -20,6 +20,7 @@ end
 
 group :test do
   gem 'debugger'
+  gem 'mocha', :require => false
 end
 
 group :development do
