@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
 
   def create
     rating = request.format.json? ? @beer.ratings.create(params[:rating]) : nil
-    respond_with([@beer, rating])
+    respond_with(@beer, rating)
   end
 
   private
