@@ -12,7 +12,8 @@ class MeasurementsController < ApplicationController
   end
 
   def create
-    measurement = @keg.measurements.create(params[:measurement])
+    measurement_params = ActiveSupport::JSON.decode(params[:keg])
+    measurement = @keg.measurements.create(measurement_params)
     respond_with([@keg, measurement])
   end
 

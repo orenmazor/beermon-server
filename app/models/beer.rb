@@ -3,7 +3,7 @@ class Beer < ActiveRecord::Base
   has_many :kegs
   has_many :ratings
   belongs_to :manufacturer
-  validates_presence_of :name, :brewery
+  validates_presence_of :name
 
   def rating
     ratings.average(:value)
