@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
 	def index
+    @beer_taps = BeerTap.all
 		@beers = Beer.all
-		@kegs = Keg.all
 	end
 end
