@@ -10,13 +10,13 @@ class DashboardController < ApplicationController
     if brewery
       twilio = Twilio::REST::Client.new($twilio_username, $twilio_password)
       from = $twilio_sender
-      to = brewery.phone
-      url = Beermon::Application.application_url + "/callback?to=#{current_user.phone_number}"
+      to = current_user.phone
+      url = Beermon::Application.application_url + "/callback?phone=#{brewery.phone}"
 
       flash[:message] = "Setting up a call to #{brewery.name}"
 
       Thread.new do
-        twilio.client.calls.create({:from => from, :to => to, :url => current_user.})
+        twilio.client.calls.create({:from => from, :to => to, :url => url})
       end
       redirect_to root_url
     else
