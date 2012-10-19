@@ -11,6 +11,8 @@ class CallbackController < ApplicationController
         r.Dial :callerId => brewery.phone
       end
 
+      Rails.logger.info response.text
+
       render :text => response.text, :content_type => "text"
     else
       render :text => "whoopsie"
