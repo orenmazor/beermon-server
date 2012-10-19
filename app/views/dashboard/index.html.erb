@@ -40,6 +40,7 @@
       <tr>
         <th>Name</th>
         <th></th>
+        <th>Vote!</th>
         <th>Brewery</th>
         <th></th>
         <th>Alcohol</th>
@@ -61,6 +62,9 @@
         <% else %>
         <td></td>
         <% end %>
+        <td>
+          <a href="/upvote?beer_id=<%=beer.id%>">Like it!</a>&nbsp;|&nbsp;<a href="/downvote?beer_id=<%=beer.id%>">Dislike it</a>
+        </td>
         <td><%= beer.brewery %></td>
         <% if current_user.admin? %>
         <td><%= link_to 'Call Em Up!', call_brewery_url(beer.manufacturer) %></td>
