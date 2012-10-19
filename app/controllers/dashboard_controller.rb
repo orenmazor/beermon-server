@@ -2,9 +2,12 @@ class DashboardController < ApplicationController
   skip_before_filter :authenticate
   before_filter :ensure_logged_in
 
+  FORGET_FACTOR = 0.2
+
 	def index
     @beer_taps = BeerTap.all
 		@beers = Beer.all
+    puts "RECOMMENDED: #{recommend_a_beer.name}"
 	end
 
   def call
@@ -37,5 +40,29 @@ class DashboardController < ApplicationController
     unless current_user.present?
       redirect_to login_url
     end
+  end
+
+  def recommend_a_beer
+    sorted = @beers.each.map { |beer| [beer, sort_value(beer)] }
+    recommended_beer = sorted.sort_by { |beersort| beersort[1] }.last[0]
+  end
+
+  def sort_value(beer)
+    # upvotes
+    a   = beer.votes.where(:value => 1)
+          .map { |v| Math.exp(-FORGET_FACTOR * (Date.today - v.updated_at.to_date).to_i) }
+          .reduce(1, :+) * 1.0
+
+    # downvotes
+    b = beer.votes.where(:value => -1)
+          .map { |v| Math.exp(-FORGET_FACTOR * (Date.today - v.updated_at.to_date).to_i) }
+          .reduce(1, :+) * 1.0
+
+    # mean and stddev
+    m  = b / (b + a)
+    sd = Math.sqrt(a * b / ((a + b) * (a + b) * (a + b + 1)))
+    
+    # sharpe ratio
+    sr = sd / m
   end
 end
