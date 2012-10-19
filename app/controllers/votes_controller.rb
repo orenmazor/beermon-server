@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     beer = Beer.find_by_id(params[:beer_id])
     if beer.present?
       vote = Vote.find_or_initialize_by_beer_id_and_user_id(beer.id, current_user.id)
-      vote.value = normalize_vote(params[:value])
+      vote.value = normalize_vote(params[:value].to_i || 0)
       vote.save!
       flash[:notice] = "You just voted for #{beer.name} with #{vote.value}. Wootz!"
     else
