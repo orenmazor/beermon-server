@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
     if brewery
       twilio = Twilio::REST::Client.new($twilio_username, $twilio_password)
       from = $twilio_sender
-      to = current_user.phone
+      to = current_user.phone_number
       url = Beermon::Application.application_url + "/callback?phone=#{brewery.phone}"
 
       flash[:message] = "Setting up a call to #{brewery.name}"
