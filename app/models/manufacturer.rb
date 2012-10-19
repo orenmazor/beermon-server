@@ -7,7 +7,7 @@ class Manufacturer < ActiveRecord::Base
 
   def valid_phone_number
     return unless phone.present?
-    return unless phone =~ /\+\d{10}/
+    return if phone =~ /\+\d{11}/
     errors.add(:phone, "must match format +10123456789")
   end
 end

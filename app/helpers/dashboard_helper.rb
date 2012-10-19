@@ -33,7 +33,42 @@ module DashboardHelper
     #100B0A
     #050B0A)
 
+  FONT_COLORS = %w(
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #000000
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    #FFFFFF
+    )
+
   def color_for_srm(srm)
-    SRMS[srm.to_i]
+    position = srm < 0 ? 1 : [30, srm.to_i].min
+    "background-color:#{SRMS[position]};color:#{FONT_COLORS[position]}"
   end
 end
