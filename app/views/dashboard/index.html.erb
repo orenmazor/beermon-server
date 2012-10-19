@@ -63,7 +63,7 @@
         <% end %>
         <td><%= beer.brewery %></td>
         <% if current_user.admin? %>
-        <%= link_to 'Call Them', call_brewery(beer.brewery) %>
+        <td><%= link_to 'Call Them', call_brewery_url(beer.brewery) %></td>
         <% end %>
         <td><%= beer.abv %></td>
         <td style="<%= color_for_srm(beer.srm) %>">
