@@ -30,6 +30,8 @@ class DashboardController < ApplicationController
   private
 
   def ensure_logged_in
-    redirect_to login_url :unless => current_user
+    unless current_user.present?
+      redirect_to login_url
+    end
   end
 end
