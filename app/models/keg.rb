@@ -9,7 +9,11 @@ class Keg < ActiveRecord::Base
   validates_presence_of :beer
 
   def remaining
-    capacity - measurements.sum(:volume)
+    if measurements.present?
+      capacity - measurements.last.volume
+    else
+      capacity
+    end
   end
 
   def ratio
