@@ -7,7 +7,8 @@ class DashboardController < ApplicationController
 	def index
     @beer_taps = BeerTap.all
 		@beers = Beer.all
-    puts "RECOMMENDED: #{recommend_a_beer.name}"
+    @recommended = top_beers(2)
+    puts @recommended.inspect
 	end
 
   def call
@@ -41,9 +42,9 @@ class DashboardController < ApplicationController
     end
   end
 
-  def recommend_a_beer
+  def top_beers(number)
     sorted = @beers.each.map { |beer| [beer, sort_value(beer)] }
-    recommended_beer = sorted.sort_by { |beersort| beersort[1] }.last[0]
+    recommended_beers = sorted.sort_by{|beersort| beersort[1] }.map{|beersort| beersort[0]}.reverse.take(number)
   end
 
   def sort_value(beer)
