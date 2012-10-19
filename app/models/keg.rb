@@ -34,6 +34,7 @@ class Keg < ActiveRecord::Base
 
   def serializable_hash(options = {})
     options[:include] = [:beer]
+    options[:methods] = [:remaining]
     super
   end
 
