@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019151218) do
+ActiveRecord::Schema.define(:version => 20121019154140) do
 
   create_table "beer_taps", :force => true do |t|
     t.string   "name"
@@ -89,5 +89,16 @@ ActiveRecord::Schema.define(:version => 20121019151218) do
     t.string   "uid"
     t.boolean  "admin",        :default => false
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "value"
+    t.integer  "beer_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["beer_id"], :name => "index_votes_on_beer_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end
