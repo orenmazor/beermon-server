@@ -14,4 +14,13 @@ class Beer < ActiveRecord::Base
     options[:methods] = [:rating]
     super
   end
+
+  def email_order
+    email = "mailto:#{manufacturer.email}?"
+    email << "subject="
+    email << %w(Shopify would like to place an order for).join(' ')
+    email << " #{name}"
+    email
+  end
+
 end

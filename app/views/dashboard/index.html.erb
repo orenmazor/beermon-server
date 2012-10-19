@@ -5,8 +5,11 @@
     <ul class="unstyled">
       <% @beer_taps.each do |beer_tap| %>
       <li>
+        <% if beer_tap.detached? %>
+        <%= beer_tap.name.titleize %> Tap is not Hooked Up
+        <% else %>
         <div class="span1">
-          <%= beer_tap.keg.beer.name %>
+          <%= beer_tap.keg.beer.name %> on <%= beer_tap.name %> tap
         </div>
         <div class="span2">
           <%= number_with_precision(beer_tap.keg.remaining, :precision => 2) %>
@@ -22,6 +25,7 @@
             </div>
           </div>
         </div>
+        <% end %>
       </li>
       <% end %>
     </ul>
@@ -34,21 +38,35 @@
   <table class="table">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Brewery</td>
-        <td>Alcohol</td>
-        <td>Colour</td>
-        <td>IBUs</td>
+        <th>Name</th>
+        <th></th>
+        <th>Brewery</th>
+        <th></th>
+        <th>Alcohol</th>
+        <th>Colour</th>
+        <th>IBUs</th>
       </tr>
     </thead>
 
     <tbody>
       <% @beers.each do |beer| %>
       <tr>
-        <td><%= beer.name %></td>
+        <td>
+          <%= beer.name %>&nbsp;
+        </td>
+        <% if current_user.admin? %>
+        <td>
+          <%= link_to "Order by Email", beer.email_order %>
+        </td>
+        <% else %>
+        <td></td>
+        <% end %>
         <td><%= beer.brewery %></td>
+        <% if current_user.admin? %>
+        <%= link_to 'Call Them', call_brewery(beer.brewery) %>
+        <% end %>
         <td><%= beer.abv %></td>
-        <td style="background-color: <%= color_for_srm(beer.srm) %>;">
+        <td style="<%= color_for_srm(beer.srm) %>">
           <%= beer.srm %>
         </td>
         <td><%= beer.ibus %>
