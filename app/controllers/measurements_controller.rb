@@ -12,7 +12,7 @@ class MeasurementsController < ApplicationController
   end
 
   def create
-    measurement_params = ActiveSupport::JSON.decode(params[:measurement]).reject{|k, v| v.blank?}
+    measurement_params = ActiveSupport::JSON.decode(params[:measurement]).reject{|k, v| v.blank? }
     Rails.logger.info(measurement_params)
     measurement = @keg.measurements.create(measurement_params)
     respond_with([@keg, measurement])
