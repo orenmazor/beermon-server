@@ -13,7 +13,7 @@ class CallbackController < ApplicationController
 
       Rails.logger.info response.text
 
-      render :text => response.text, :content_type => "text"
+      render :text => response.text, :content_type => "application/xml"
     else
       render :text => "whoopsie"
     end
