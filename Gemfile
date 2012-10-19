@@ -6,6 +6,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'simple_form'
 gem 'twilio-ruby'
+gem 'unicorn'
 
 gem 'omniauth-google-apps'
 
