@@ -16,7 +16,7 @@ Beermon::Application.routes.draw do
   resources :dashboard
 
   get '/dashboard/call/:manufacturer_id', :to => 'dashboard#call', :as => :call_brewery
-  get '/callback', :to => 'callback#index'
+  post '/callback', :to => 'callback#create'
   get '/vote', :to => 'votes#vote'
 
   get '/login', :to => 'sessions#new', :as => :login
