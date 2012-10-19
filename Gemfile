@@ -29,6 +29,12 @@ end
 
 group :development do
   gem 'sqlite3'
+
+  # for great debugging justice
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 group :production do
