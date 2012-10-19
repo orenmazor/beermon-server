@@ -13,12 +13,17 @@ class DashboardController < ApplicationController
       twilio = Twilio::REST::Client.new($twilio_username, $twilio_password)
       from = $twilio_sender
       to = current_user.phone_number
+
       url = Beermon::Application.application_url + "/callback?phone=#{brewery.phone}"
 
-      flash[:message] = "Setting up a call to #{brewery.name}"
+      flash[:message] = "Setting up a call with #{brewery.name}"
 
-      Thread.new do
-        twilio.client.calls.create({:from => from, :to => to, :url => url})
+      if Rails.env.production?
+        Thread.new do
+          call = twilio.account.calls.create({:from => from, :to => to, :url => url})
+        end
+      else
+        flash[:message] << "You are in development fool! No real calls"
       end
     else
       flash[:error] = "That brewery doesn't exist???!?"

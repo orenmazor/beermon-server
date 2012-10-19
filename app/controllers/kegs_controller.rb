@@ -14,7 +14,7 @@ class KegsController < ApplicationController
   end
 
   def create
-    keg_params = ActiveSupport::JSON.decode(params[:keg])
+    keg_params = ActiveSupport::JSON.decode(params[:keg]).reject{|k, v| v.blank?}
     keg = request.format.json? ? @beer.kegs.create(keg_params) : nil
     respond_with([@beer, keg])
   end
