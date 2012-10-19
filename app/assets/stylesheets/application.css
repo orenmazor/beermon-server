@@ -28,9 +28,13 @@ h1
 thead
 {
 	font-family: 'Arial Rounded MT Bold';
-	color: #D44F26;
+	color: #A62135;
+}
 
-
+.beer-colour
+{
+	background-image: url('/assets/beer-gloss.png');
+	background-size: 100% 120%;
 }
 
 footer
