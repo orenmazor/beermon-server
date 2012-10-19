@@ -1,7 +1,7 @@
 class CallbackController < ApplicationController
   skip_before_filter :authenticate
 
-  def index
+  def create
     Rails.logger.info params
     brewery = Manufacturer.find_by_id(params[:brewery])
     if brewery
