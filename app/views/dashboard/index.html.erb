@@ -32,6 +32,15 @@
   </div>
 </div>
 
+<h1>To Order Next:</h1>
+
+<div class="row well">
+  <div class="span12">
+    <%= @recommended.map{|beer| beer.name}.to_sentence %>
+  </div>
+</div>
+
+
 <h1>&#9765; The Bible &#9765;</h1>
 
 <div class="well row">
