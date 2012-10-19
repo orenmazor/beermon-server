@@ -8,7 +8,9 @@ class CallbackController < ApplicationController
       Rails.logger.info "#{brewery.name}"
       response = Twilio::TwiML::Response.new do |r|
         r.Say "Connecting you to #{brewery.name}", :voice => 'woman'
-        r.Dial :callerId => brewery.phone
+        r.Dial :callerId => brewery.phone do |d|
+          d.Client "Beermon"
+        end
       end
 
       Rails.logger.info response.text
