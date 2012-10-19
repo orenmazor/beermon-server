@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
       from = $twilio_sender
       to = current_user.phone_number
 
-      url = Beermon::Application.application_url + "/callback?phone=#{brewery.phone}"
+      url = Beermon::Application.application_url + "/callback?brewery=#{brewery.id}"
 
       flash[:message] = "Setting up a call with #{brewery.name}"
 
