@@ -13,4 +13,12 @@ Beermon::Application.routes.draw do
     resources :measurements, :only => [:index, :create, :show]
   end
 
+  resources :dashboard
+
+  get '/login', :to => 'sessions#new', :as => :login
+  post '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure', :to => 'sessions#failure'
+
+  root :to => 'dashboard#index'
+
 end

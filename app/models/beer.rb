@@ -2,6 +2,7 @@ class Beer < ActiveRecord::Base
   attr_accessible :ibus, :srm, :abv, :name, :brewery
   has_many :kegs
   has_many :ratings
+  belongs_to :manufacturer
   validates_presence_of :name, :brewery
 
   def rating

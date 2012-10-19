@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018144916) do
+ActiveRecord::Schema.define(:version => 20121019151218) do
 
   create_table "beer_taps", :force => true do |t|
     t.string   "name"
@@ -25,17 +25,33 @@ ActiveRecord::Schema.define(:version => 20121018144916) do
     t.float    "abv"
     t.float    "srm"
     t.float    "ibus"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "manufacturer_id"
   end
 
   create_table "kegs", :force => true do |t|
     t.string   "kind"
     t.float    "capacity"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "beer_tap_id"
     t.integer  "beer_id"
+    t.boolean  "notified",    :default => false
+  end
+
+  create_table "manufacturers", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "province",    :default => "Ontario"
+    t.string   "country",     :default => "Canada"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "measurements", :force => true do |t|
@@ -61,6 +77,17 @@ ActiveRecord::Schema.define(:version => 20121018144916) do
     t.string   "requested_by"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "phone_number"
+    t.boolean  "send_sms"
+    t.boolean  "send_email"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "uid"
+    t.boolean  "admin",        :default => false
   end
 
 end

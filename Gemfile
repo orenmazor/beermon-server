@@ -5,6 +5,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'simple_form'
+gem 'twilio-ruby'
+
+gem 'omniauth-google-apps'
 
 # Gems used only for assets and not required
 # in production environments by default.

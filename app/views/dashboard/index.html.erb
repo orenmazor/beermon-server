@@ -1,0 +1,59 @@
+<h1>What's on Tap?</h1>
+
+<div class="row well">
+  <div class="span12">
+    <ul class="unstyled">
+      <% @beer_taps.each do |beer_tap| %>
+      <li>
+        <div class="span1">
+          <%= beer_tap.keg.beer.name %>
+        </div>
+        <div class="span2">
+          <%= number_with_precision(beer_tap.keg.remaining, :precision => 2) %>
+          / 
+          <%= number_with_precision(beer_tap.keg.capacity, :precision => 2) %>
+        </div>
+        <div class="span8 offset1">
+          <div class="progress">
+            <div class="bar bar-<%= beer_tap.keg.status %>" style="width:<%= beer_tap.keg.ratio %>%;">
+              <% if beer_tap.keg.below_threshold? %>
+              <span>Running Low!</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<h1>&#9765; The Bible &#9765;</h1>
+
+<div class="well row">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Brewery</td>
+        <td>Alcohol</td>
+        <td>Colour</td>
+        <td>IBUs</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @beers.each do |beer| %>
+      <tr>
+        <td><%= beer.name %></td>
+        <td><%= beer.brewery %></td>
+        <td><%= beer.abv %></td>
+        <td style="background-color: <%= color_for_srm(beer.srm) %>;">
+          <%= beer.srm %>
+        </td>
+        <td><%= beer.ibus %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
