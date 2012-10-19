@@ -20,7 +20,6 @@ class DashboardController < ApplicationController
       Thread.new do
         twilio.client.calls.create({:from => from, :to => to, :url => url})
       end
-      redirect_to root_url
     else
       flash[:error] = "That brewery doesn't exist???!?"
     end
