@@ -34,4 +34,5 @@ Beermon::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  Beermon::Application.application_url = "http://localhost:3000"
 end
