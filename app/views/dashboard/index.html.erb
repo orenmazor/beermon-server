@@ -66,7 +66,7 @@
         <td><%= link_to 'Call Them', call_brewery_url(beer.brewery) %></td>
         <% end %>
         <td><%= beer.abv %></td>
-        <td style="<%= color_for_srm(beer.srm) %>">
+        <td style="<%= color_for_srm(beer.srm) %>" class="beer-colour">
           <%= beer.srm %>
         </td>
         <td><%= beer.ibus %>
