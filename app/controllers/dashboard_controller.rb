@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  skip_before_filter :authenticate
+  before_filter :ensure_logged_in
 
 	def index
     @beer_taps = BeerTap.all
@@ -24,4 +26,9 @@ class DashboardController < ApplicationController
     end
     redirect_to root_url
   end
+
+  private
+
+  def ensure_logged_in
+    redirect_to login_url :unless => current_user
 end
