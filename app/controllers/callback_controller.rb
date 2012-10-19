@@ -1,5 +1,6 @@
 class CallbackController < ApplicationController
-
+  skip_before_filter :authenticate
+  
   def index
     brewery = Brewery.find_by_phone(params[:phone])
     response = Twilio::TwiML::Response.new do |r|
