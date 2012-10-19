@@ -22,6 +22,7 @@ class DashboardController < ApplicationController
       flash[:message] = "Setting up a call with #{brewery.name}"
 
       if Rails.env.production?
+        Rails.logger.info "[Dashboard#call] -- callback url: #{url}"
         call = twilio.account.calls.create({:from => from, :to => to, :url => url})
       else
         flash[:message] << "You are in development fool! No real calls"
