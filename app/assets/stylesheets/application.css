@@ -27,7 +27,8 @@ h1
 
 thead
 {
-	font-family: 'Arial Rounded MT Bold';
+	font-family: 'Otari-Bold-Limited', 'Arial Rounded MT Bold';
+	font-weight: normal;
 	color: #A62135;
 }
 
@@ -40,7 +41,8 @@ thead
 footer
 {
 	margin: 20px 0px 0px 50px;
-	font-family: 'Arial Rounded MT Bold';
-	font-size: .9em;
+	font-family: 'Otari-Bold-Limited', 'Arial Rounded MT Bold';
+	font-size: 1.1em;
+	font-weight: normal;
 	color: #aaa;
 }

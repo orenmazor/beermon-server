@@ -21,5 +21,12 @@
 
 
   
- @font-face {font-family: 'Otari-Bold-Limited';src: url('webfonts/2470E9_0_0.eot');src: url('webfonts/2470E9_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2470E9_0_0.woff') format('woff'),url('webfonts/2470E9_0_0.ttf') format('truetype');}
+ @font-face {
+ 	font-family: 'Otari-Bold-Limited';
+ 	src: url('/assets/2470E9_0_0.eot');
+ 	src: url('/assets/2470E9_0_0.eot?#iefix') 
+ 	format('embedded-opentype'),
+ 	url('/assets/2470E9_0_0.woff') format('woff'),
+ 	url('/assets/2470E9_0_0.ttf') format('truetype');
+ }
  
