@@ -37,4 +37,17 @@ class MeasurementsControllerTest < ActionController::TestCase
       assert_response :created
     end
   end
+
+  test "it should not be possible to create a measurement with duplicate volumes for the same keg" do
+    first_request = {:volume => 8.0, :sampled_at => 1.minute.ago}
+    second_request = {:volume => 8.0, :sampled_at => Time.now}
+
+    post :create, :keg_id => @keg, :measurement => first_request, :format => :json
+    assert_response :created
+
+    assert_no_difference "Measurement.count" do
+      post :create, :keg_id => @keg, :measurement => second_request, :format => :json
+      assert_response :unprocessable_entity
+    end
+  end
 end
