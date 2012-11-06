@@ -10,7 +10,7 @@ class Keg < ActiveRecord::Base
 
   def remaining
     if measurements.present?
-      capacity - measurements.last.volume
+      capacity - (measurements.last.volume || 0)
     else
       capacity
     end
