@@ -1,10 +1,11 @@
 class BeersController < ApplicationController
   respond_to :json, :only => [:index, :show, :create, :update, :destroy]
+  respond_to :html
   before_filter :find_beer, :only => [:show, :update, :destroy]
 
   def index
-    beers = Beer.all
-    respond_with(beers)
+    @beers = Beer.all
+    respond_with(@beers)
   end
 
   def show
@@ -14,6 +15,10 @@ class BeersController < ApplicationController
   def update
     @beer.update_attributes(params[:beer])
     respond_with(@beer)
+  end
+
+  def new
+    @beer = Beer.new
   end
 
   def create

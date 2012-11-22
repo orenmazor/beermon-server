@@ -3,6 +3,9 @@ class KegsController < ApplicationController
   before_filter :find_beer, :only => [:create]
   before_filter :find_beer_tap, :only => [:show, :update]
 
+  def index
+  end
+
   def show
     respond_with(@beer_tap.keg)
   end

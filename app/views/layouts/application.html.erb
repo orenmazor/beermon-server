@@ -37,26 +37,34 @@
   <body>
 
     <div class="navbar">
-      <div class="navbar-inner">
+      <div class="navbar-inner application-header <%= navbar_admin %>">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><img src="/assets/beermon.png" /></a>
-          <div class="container-fluid nav-collapse">
-            <!--<ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>-->
-          </div><!--/.nav-collapse -->
+          <a class="brand" href="/"><img src="/assets/beermon.png" /></a>
         </div>
       </div>
     </div>
 
     <div class="container-fluid">
+      <% if current_user.admin? %>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <ul class="nav pull-left">
+            <li><%= link_to "Beer", url_for(:controller => 'beers', :action => 'index')  %></li>
+            <li><%= link_to "Kegs", url_for(:controller => 'kegs', :action => 'index') %></li>
+            <li><%= link_to "Breweries", url_for(:controller => 'breweries', :action => 'index') %></li>
+          </ul>
+
+          <ul class="nav pull-right">
+            <li><%= link_to "Profile", url_for(:controller => 'kegs', :action => 'index')  %></li>
+          </ul>
+        </div>
+      </div>
+      <% end %>
       <div class="row-fluid">
         <div class="span10 offset1">
           <%= bootstrap_flash %>
@@ -64,11 +72,11 @@
         </div>
       </div><!--/row-->
 
-      <footer>
-        <p>Team Beermon 2012</p>
-      </footer>
-
     </div> <!-- /container -->
+
+    <footer>
+      <p>Team Beermon 2012</p>
+    </footer>
 
     <!-- Javascripts
     ================================================== -->

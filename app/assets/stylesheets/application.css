@@ -19,10 +19,23 @@ h1
 	color: #6E234D;
 }
 
-.navbar-inner
+.application-header
 {
 	background-color: #2E1F30;
 	background-image: none;
+}
+
+.navbar-admin
+{
+  background-color: #42004B;
+}
+
+form .input {
+	padding-top: 10px;
+}
+
+form .input label {
+	padding-right: 5px;
 }
 
 thead
