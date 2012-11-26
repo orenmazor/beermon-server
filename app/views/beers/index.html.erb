@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="span1">
-    <%= link_to 'Create', :action => 'new' %>
+  <div class="span1 offset11">
+    <%= link_to 'Create', {:action => 'new'}, {:class => 'btn btn-primary'} %>
   </div>
 </div>
 
-<% if @beers.present? %>
+<div class="row">
+  <% if @beers.present? %>
   <%= render 'dashboard/beer_list' %>
-<% else %>
-<div class="alert pagination-centered span6 offset3">
-  <p>You don't have any beers added yet.</p>
-  <p><%= link_to 'Add one now', :action => 'new' %></p>
+  <% else %>
+  <div class="alert pagination-centered span6 offset3">
+    <p>You don't have any beers added yet.</p>
+    <p><%= link_to 'Add one now', :action => 'new' %></p>
+  </div>
+  <% end %>
 </div>
-<% end %>

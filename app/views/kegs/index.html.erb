@@ -1,0 +1,20 @@
+<div class="row">
+  <% @beer_taps.each do |beer_tap| %>
+    <%= render :partial => 'beer_tap', :locals => {:beer_tap => beer_tap} %>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="offset11 span1">
+    <%= link_to 'Create', {:action => 'new'}, {:class => 'btn btn-primary'} %>
+  </div>
+</div>
+
+<h3>Available Kegs</h3>
+<% @kegs.each_slice(3) do |row| %>
+  <div class="row">
+    <% row.each do |keg| %>
+      <%= render :partial => "keg", :locals => {:keg => keg} %>
+    <% end %>
+  </div>
+<% end %>

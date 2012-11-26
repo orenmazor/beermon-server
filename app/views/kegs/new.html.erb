@@ -1,0 +1,9 @@
+<div class="row">
+  <%= simple_form_for @keg, :html => {:class => 'form-horizontal'} do |f| %>
+    <%= f.association :beer %>
+    <%= f.input :capacity, :label => "Capacity of keg (in liters)" %>
+    <%= f.input :kind, :label => "Keg Attachment" %>
+
+    <%= f.submit 'Submit', :class => 'btn btn-success' %>
+  <% end %>
+</div>

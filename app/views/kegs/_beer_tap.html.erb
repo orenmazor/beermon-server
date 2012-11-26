@@ -1,0 +1,26 @@
+<div class="well span6 droppable" data-id="<%= beer_tap.id %>">
+  <h2><%= beer_tap.name.titleize %> Tap</h2>
+  <% if beer_tap.detached? %>
+    <%= render :partial => 'kegs/sadface' %>
+  <% else %>
+  <h4><%= beer_tap.keg.beer.name %></h4>
+  <div class="pull-left">
+    <h4><%= beer_tap.keg.beer.abv %>%</h4>
+  </div>
+  <div class="pull-right">
+    <h4>
+      <%= number_with_precision(beer_tap.keg.remaining, :precision => 2) %>
+      /
+      <%= number_with_precision(beer_tap.keg.capacity, :precision => 2) %>&nbsp;
+    </h4>
+  </div>
+  <div class="clearfix"></div>
+  <div class="progress">
+    <div class="bar bar-<%= beer_tap.keg.status %>" style="width: <%= beer_tap.keg.ratio %>%;">
+      <% if beer_tap.keg.below_threshold? %>
+      <div>Running Low!</div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

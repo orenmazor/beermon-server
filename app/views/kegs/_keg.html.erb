@@ -1,0 +1,8 @@
+<div class="span4 well <%= add_draggable(keg) %>" data-id="<%= keg.id %>">
+  <button type="button" class="close">x</button>
+  <h2><%= keg.beer.name %></h2>
+  <p><strong><%= keg.beer.manufacturer.name %></strong></p>
+  <p><%= keg.beer.abv %>%</p>
+  <p><%= keg.beer.ibus %> IBU</p>
+  <p>Received On: <%= keg.created_at %></p>
+</div>

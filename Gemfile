@@ -5,6 +5,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'simple_form'
+gem 'country_select'
 gem 'twilio-ruby'
 gem 'unicorn'
 

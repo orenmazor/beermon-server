@@ -5,6 +5,7 @@ class Keg < ActiveRecord::Base
   belongs_to :beer_tap
   attr_accessible :kind, :capacity, :beer, :notified
   after_update :send_capacity_warning, :if => :below_threshold?
+  scope :untapped, where(:beer_tap_id => nil)
 
   validates_presence_of :beer
 
