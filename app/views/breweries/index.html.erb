@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="span1">
+    <%= link_to 'Create', :action => 'new' %>
+  </div>
+</div>
+
+<% if @breweries.present? %>
+  <% @breweries.each_slice(3) do |row| %>
+  <div class="row">
+    <% row.each do |brewery| %>
+      <%= render :partial => 'brewery', :locals => {:brewery => brewery} %>
+    <% end %>
+  </div>
+  <% end %>
+<% else %>
+<div class="well row">
+  <div class="alert pagination-centered span6 offset3">
+    <p>You don't have any breweries yet.</p>
+    <p><%= link_to 'Add one now', :action => 'new' %></p>
+  </div>
+</div>
+<% end %>

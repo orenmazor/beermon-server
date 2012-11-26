@@ -1,5 +1,5 @@
 class Beer < ActiveRecord::Base
-  attr_accessible :ibus, :srm, :abv, :name, :brewery
+  attr_accessible :ibus, :srm, :abv, :name, :brewery, :manufacturer_id
   has_many :kegs
   has_many :votes
   has_many :ratings

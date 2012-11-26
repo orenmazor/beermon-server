@@ -1,0 +1,18 @@
+<div class="well span4">
+  <address>
+    <strong><%= brewery.name %></strong><br />
+    <%= brewery.address1 %><br />
+    <%= brewery.address2 %><br />
+    <%= brewery.city %>, <%= brewery.province %><br />
+    <%= brewery.postal_code %><br />
+  </address>
+
+  <address>
+    <% if brewery.phone %>
+    <strong>Tel:</strong> <%= link_to brewery.phone, "tel:#{brewery.phone}" %><br />
+    <% end %>
+    <% if brewery.email %>
+    <strong>Email:</strong> <%= link_to brewery.email, "mailto:#{brewery.email}" %><br />
+    <% end %>
+  </address>
+</div>
